@@ -20,8 +20,8 @@ def secure_token
     # Generate a new token and store it in token_file.
     token1 = SecureRandom.hex(64)
     token2 = SecureRandom.hex(64)
-    token = toke1 ^ token2
-    File.write(token_file, token)
+    token = token1.to_i ^ token2.to_i
+    File.write(token_file, token.to_s)
     token
   end
 end
