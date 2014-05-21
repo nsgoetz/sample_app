@@ -9,9 +9,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   before_create :create_remember_token
-  def create_remember_token
-    # Create the token.
-  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
