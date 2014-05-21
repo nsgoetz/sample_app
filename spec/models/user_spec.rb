@@ -36,9 +36,9 @@ describe User do
       addresses.each do |invalid_address|
         @user.email = invalid_address
         expect(@user).not_to be_valid
+        end
       end
     end
-  end
 
   describe "when email format is valid" do
     it "should be valid" do
@@ -91,5 +91,11 @@ describe User do
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_false }
     end
+    
+    describe "remember token" do
+      before { @user.save }
+      its(:remember_token) { should_not be_blank }
+    end
+
   end
 end
